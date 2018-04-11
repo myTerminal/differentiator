@@ -1,0 +1,48 @@
+@import 'mixins.less';
+
+@import '../../node_modules/font-awesome/css/font-awesome.min.css';
+
+@font-face {
+    font-family: OpenSans;
+    src: url('../fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+    font-family: OpenSans;
+    font-weight: bold;
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: RobotoMono;
+    src: url('../fonts/RobotoMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: RobotoMono;
+    font-weight: bold;
+    src: url('../fonts/RobotoMono-Bold.ttf');
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: OpenSans;
+
+        #page {
+            width: 100%;
+            height: 100%;
+
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

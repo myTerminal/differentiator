@@ -1,0 +1,52 @@
+{
+  "name": "differentiator",
+  "version": "0.9.0",
+  "description": "A simple file compare tool",
+  "main": "public/index.html",
+  "scripts": {
+    "debug": "webpack --config webpack.dev.js",
+    "develop": "webpack --config webpack.dev.js --watch",
+    "live": "webpack-dev-server --config webpack.live.js --open",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:myTerminal/differentiator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/myTerminal/differentiator/issues"
+  },
+  "homepage": "https://github.com/myTerminal/differentiator#readme",
+  "keywords": [
+    "org",
+    "markdown"
+  ],
+  "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "font-awesome": "4.7.0",
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.4",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "clean-webpack-plugin": "0.1.19",
+    "copy-webpack-plugin": "4.5.1",
+    "css-loader": "0.28.11",
+    "extract-text-webpack-plugin": "4.0.0-alpha.0",
+    "file-loader": "1.1.11",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.0.6",
+    "less": "3.0.1",
+    "less-loader": "4.1.0",
+    "style-loader": "0.20.3",
+    "uglifyjs-webpack-plugin": "1.2.4",
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.12",
+    "webpack-dev-server": "3.1.1",
+    "webpack-merge": "4.1.2"
+  }
+}
