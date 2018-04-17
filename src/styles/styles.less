@@ -39,9 +39,113 @@ html {
             width: 100%;
             height: 100%;
 
-            .container {
+            .root-container {
                 width: 100%;
                 height: 100%;
+                position: relative;
+
+                .header {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    background-color: #000;
+                    color: #eee;
+
+                    .source {
+                        display: inline-block;
+                        width: 25px;
+                        height: 25px;
+                        margin-left: 5px;
+                        vertical-align: middle;
+                        background-image: url('../images/github.png');
+                        background-size: 100%;
+                        filter: invert(1);
+                    }
+                }
+
+                .container {
+                    .box-sizing(border-box);
+                    width: 100%;
+                    height: 100%;
+                    padding: 50px 0;
+
+                    .file-input {
+                        .box-sizing(border-box);
+                        float: left;
+                        width: 50%;
+                        height: 100%;
+                        border: 1px solid #ccc;
+
+                        .picker {
+                            position: relative;
+                            top: 50%;
+                            .transform(translateY(-50%));
+
+                            div {
+                                text-align: center;
+                            }
+                        }
+
+                        .file-contents {
+                            display: none;
+                            height: 100%;
+                            overflow-y: auto;
+                        }
+
+                        &.loaded {
+
+                            .picker {
+                                display: none;
+                            }
+
+                            .file-contents {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .footer {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                    font-size: 12px;
+                    background-color: #ccc;
+
+                    .instruction {
+                        line-height: 50px;
+                    }
+
+                    .control {
+                        display: none;
+                        .box-sizing(border-box);
+                        margin: 5px;
+                        padding: 8px;
+                        line-height: 20px;
+                        border: 2px solid #777;
+                        background-color: #fff;
+                        .round-borders(5px);
+                        cursor: pointer;
+                    }
+
+                    &.loaded {
+
+                        .instruction {
+                            display: none;
+                        }
+
+                        .control {
+                            display: inline-block;
+                        }
+                    }
+                }
             }
         }
     }
