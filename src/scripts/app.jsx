@@ -1,18 +1,16 @@
-/* global require */
+/* global require document FileReader alert */
 
-import '../styles/styles.less';
-import './service-worker-starter.js';
-
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { FilePicker } from 'react-file-picker';
 
+import '../styles/styles.less';
+import './service-worker-starter';
 import packageDetails from '../../package.json';
 
 const page = document.getElementById('page');
 
 class App extends React.Component {
-
     constructor() {
         super();
 
@@ -24,11 +22,11 @@ class App extends React.Component {
         };
     }
 
-    onFilePick (file, containerNumber) {
+    onFilePick(file, containerNumber) {
         this.loadFile(file, containerNumber);
     }
 
-    loadFile (file, containerNumber) {
+    loadFile(file, containerNumber) {
         var context = this,
             reader = new FileReader();
 
@@ -57,7 +55,7 @@ class App extends React.Component {
         reader.readAsText(file);
     }
 
-    resetComparison () {
+    resetComparison() {
         this.setState({
             isLeftFileLoaded: false,
             isRightFileLoaded: false,
@@ -66,52 +64,52 @@ class App extends React.Component {
         });
     }
 
-    startComparingFileContents () {
+    startComparingFileContents() {
         console.log('Comparing file contents');
     }
 
     render() {
         return (
-            <div className='root-container'>
-                <div className='header'>
+            <div className="root-container">
+                <div className="header">
                     <b>differentiator</b> - A simple file compare tool (v {packageDetails.version})
-                    <a className='source' href='https://github.com/myTerminal/differentiator' target='_blank'></a>
+                    <a className="source" href="https://github.com/myTerminal/differentiator" target="_blank">&nbsp;</a>
                 </div>
-                <div className='container'>
+                <div className="container">
                     <div className={'file-input' + (this.state.isLeftFileLoaded ? ' loaded' : '')}>
-                        <div className='picker'>
+                        <div className="picker">
                             <FilePicker
                                 onChange={file => this.onFilePick(file, 1)}
                                 onError={err => alert(err)}>
-                                <button className='file-picker-button'>
+                                <button className="file-picker-button">
                                     Pick a file to compare
                                 </button>
                             </FilePicker>
                         </div>
-                        <div className='file-contents'>
+                        <div className="file-contents">
                             {this.state.leftFileContents}
                         </div>
                     </div>
                     <div className={'file-input' + (this.state.isRightFileLoaded ? ' loaded' : '')}>
-                        <div className='picker'>
+                        <div className="picker">
                             <FilePicker
                                 onChange={file => this.onFilePick(file, 2)}
                                 onError={err => alert(err)}>
-                                <button className='file-picker-button'>
+                                <button className="file-picker-button">
                                     Pick a file to compare
                                 </button>
                             </FilePicker>
                         </div>
-                        <div className='file-contents'>
+                        <div className="file-contents">
                             {this.state.rightFileContents}
                         </div>
                     </div>
                 </div>
-                <div className={'footer' + (this.state.isLeftFileLoaded && this.state.isRightFileLoaded ? ' loaded': '')}>
-                    <div className='instruction'>
+                <div className={'footer' + (this.state.isLeftFileLoaded && this.state.isRightFileLoaded ? ' loaded' : '')}>
+                    <div className="instruction">
                         Pick a file on each side to begin comparing contents
                     </div>
-                    <div className='control' onClick={this.resetComparison.bind(this)}>
+                    <div className="control" onClick={this.resetComparison.bind(this)}>
                         Reset comparison
                     </div>
                 </div>
