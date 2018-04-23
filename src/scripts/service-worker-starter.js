@@ -1,4 +1,4 @@
-/* global navigator */
+/* global navigator window */
 
 if ('serviceWorker' in navigator) {
     var isFirstTimeInstallation = !navigator.serviceWorker.controller,
