@@ -1,5 +1,7 @@
 /* global navigator window */
 
+import { confirm } from 'ample-alerts';
+
 if ('serviceWorker' in navigator) {
     var isFirstTimeInstallation = !navigator.serviceWorker.controller,
         listenForWaitingServiceWorker = function (reg, callback) {
@@ -29,9 +31,19 @@ if ('serviceWorker' in navigator) {
             });
         },
         promptUserToRefresh = function (reg) {
-            if (window.confirm('A new version available! Do you want to refresh and load the latest version?')) {
-                reg.waiting.postMessage('skipWaiting');
-            }
+            confirm([
+                'A new version is available!',
+                'Do you want to refresh and load the latest version?'
+            ],
+            function (response) {
+                if (response) {
+                    reg.waiting.postMessage('skipWaiting');
+                }
+            },
+            [
+                'Sure',
+                'Later'
+            ]);
         };
 
     window.addEventListener('load', function () {
