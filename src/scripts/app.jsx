@@ -3,12 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FilePicker } from 'react-file-picker';
+import DiffMatchPatch from 'diff-match-patch';
 
 import '../styles/styles.less';
 import './service-worker-starter';
 import packageDetails from '../../package.json';
 
 const page = document.getElementById('page');
+
+const classes = ['equal', 'add', 'delete'];
 
 class App extends React.Component {
     constructor() {
@@ -18,8 +21,23 @@ class App extends React.Component {
             isLeftFileLoaded: false,
             isRightFileLoaded: false,
             leftFileContents: '',
-            rightFileContents: ''
+            rightFileContents: '',
+            isDiffReady: false,
+            diff: []
         };
+    }
+
+    componentDidMount() {
+        var fileContents1 = document.getElementById('file-contents-1'),
+            fileContents2 = document.getElementById('file-contents-2');
+
+        fileContents1.addEventListener('scroll', function () {
+            fileContents2.scrollTop = this.scrollTop;
+        });
+
+        fileContents2.addEventListener('scroll', function () {
+            fileContents1.scrollTop = this.scrollTop;
+        });
     }
 
     onFilePick(file, containerNumber) {
@@ -60,12 +78,23 @@ class App extends React.Component {
             isLeftFileLoaded: false,
             isRightFileLoaded: false,
             leftFileContents: '',
-            rightFileContents: ''
+            rightFileContents: '',
+            isDiffReady: false,
+            diff: []
         });
     }
 
     startComparingFileContents() {
-        console.log('Comparing file contents');
+        var dmp = new DiffMatchPatch(),
+            diff = dmp.diff_main(
+                this.state.leftFileContents,
+                this.state.rightFileContents
+            );
+
+        this.setState({
+            isDiffReady: true,
+            diff: diff
+        });
     }
 
     render() {
@@ -86,8 +115,14 @@ class App extends React.Component {
                                 </button>
                             </FilePicker>
                         </div>
-                        <div className="file-contents">
-                            {this.state.leftFileContents}
+                        <div className="file-contents" id="file-contents-1">
+                            {
+                                !this.state.isDiffReady ?
+                                    this.state.leftFileContents :
+                                    this.state.diff.map(d =>
+                                        <span key={d[0] + d[1]} className={'diff ' + (classes[d[0]] || 'delete')}>{d[1]}</span>
+                                    )
+                            }
                         </div>
                     </div>
                     <div className={'file-input' + (this.state.isRightFileLoaded ? ' loaded' : '')}>
@@ -100,8 +135,14 @@ class App extends React.Component {
                                 </button>
                             </FilePicker>
                         </div>
-                        <div className="file-contents">
-                            {this.state.rightFileContents}
+                        <div className="file-contents" id="file-contents-2">
+                            {
+                                !this.state.isDiffReady ?
+                                    this.state.leftFileContents :
+                                    this.state.diff.map(d =>
+                                        <span key={d[0] + d[1]} className={'diff ' + (classes[d[0]] || 'delete')}>{d[1]}</span>
+                                    )
+                            }
                         </div>
                     </div>
                 </div>

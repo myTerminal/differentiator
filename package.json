@@ -1,6 +1,6 @@
 {
   "name": "differentiator",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "A simple file compare tool",
   "main": "public/index.html",
   "scripts": {
@@ -25,6 +25,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "ample-alerts": "0.9.4",
+    "diff-match-patch": "1.0.1",
     "font-awesome": "4.7.0",
     "react": "15.6.2",
     "react-dom": "15.6.2",
