@@ -34,16 +34,14 @@ if ('serviceWorker' in navigator) {
             confirm([
                 'A new version is available!',
                 'Do you want to refresh and load the latest version?'
-            ],
-            function (response) {
-                if (response) {
-                    reg.waiting.postMessage('skipWaiting');
-                }
-            },
-            [
-                'Sure',
-                'Later'
-            ]);
+            ], {
+                onAction: function (response) {
+                    if (response) {
+                        reg.waiting.postMessage('skipWaiting');
+                    }
+                },
+                labels: ['Sure', 'Later']
+            });
         };
 
     window.addEventListener('load', function () {
