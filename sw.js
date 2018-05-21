@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1526917634682',
+var cacheName = '1526917953951',
     origin = '/differentiator/';
 
 this.addEventListener('install', function (event) {
@@ -12,7 +12,7 @@ this.addEventListener('install', function (event) {
                     origin + 'index.html',
                     origin + 'styles/styles.css',
                     origin + 'scripts/app.js',
-                    origin + 'fonts/OpenSans-Light.ttf',
+                    origin + 'fonts/OpenSans-Bold.ttf',
                     origin + 'fonts/OpenSans-Regular.ttf',
                     origin + 'fonts/RobotoMono-Bold.ttf',
                     origin + 'fonts/RobotoMono-Regular.ttf'
