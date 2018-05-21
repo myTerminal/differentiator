@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1526267744177',
+var cacheName = '1526917634682',
     origin = '/differentiator/';
 
 this.addEventListener('install', function (event) {
