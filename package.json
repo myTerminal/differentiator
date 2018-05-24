@@ -1,6 +1,6 @@
 {
   "name": "differentiator",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "A simple file compare tool",
   "main": "public/index.html",
   "scripts": {
