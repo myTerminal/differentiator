@@ -15,7 +15,13 @@ this.addEventListener('install', function (event) {
                     origin + 'fonts/OpenSans-Bold.ttf',
                     origin + 'fonts/OpenSans-Regular.ttf',
                     origin + 'fonts/RobotoMono-Bold.ttf',
-                    origin + 'fonts/RobotoMono-Regular.ttf'
+                    origin + 'fonts/RobotoMono-Regular.ttf',
+                    origin + 'fonts/fontawesome-webfont.woff2',
+                    origin + 'icons/launcher-icon-1x.png',
+                    origin + 'icons/launcher-icon-2x.png',
+                    origin + 'icons/launcher-icon-4x.png',
+                    origin + 'manifest.json',
+                    origin + 'favicon.ico'
                 ]
             );
         }).catch(function (err) {
