@@ -34,10 +34,12 @@ class App extends React.Component {
 
         fileContents1.addEventListener('scroll', function () {
             fileContents2.scrollTop = this.scrollTop;
+            fileContents2.scrollLeft = this.scrollLeft;
         });
 
         fileContents2.addEventListener('scroll', function () {
             fileContents1.scrollTop = this.scrollTop;
+            fileContents1.scrollLeft = this.scrollLeft;
         });
     }
 
