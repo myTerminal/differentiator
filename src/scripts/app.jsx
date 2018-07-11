@@ -23,6 +23,7 @@ class App extends React.Component {
             leftFileContents: '',
             rightFileContents: '',
             isDiffReady: false,
+            shouldWrapText: false,
             diff: []
         };
     }
@@ -73,6 +74,12 @@ class App extends React.Component {
         reader.readAsText(file);
     }
 
+    toggleTextWrap() {
+        this.setState({
+            shouldWrapText: !this.state.shouldWrapText
+        });
+    }
+
     resetComparison() {
         this.setState({
             isLeftFileLoaded: false,
@@ -115,7 +122,7 @@ class App extends React.Component {
                                 </button>
                             </FilePicker>
                         </div>
-                        <div className="file-contents" id="file-contents-1">
+                        <div className={'file-contents' + (this.state.shouldWrapText ? ' wrap' : '')} id="file-contents-1">
                             {
                                 !this.state.isDiffReady ?
                                     this.state.leftFileContents :
@@ -135,7 +142,7 @@ class App extends React.Component {
                                 </button>
                             </FilePicker>
                         </div>
-                        <div className="file-contents" id="file-contents-2">
+                        <div className={'file-contents' + (this.state.shouldWrapText ? ' wrap' : '')} id="file-contents-2">
                             {
                                 !this.state.isDiffReady ?
                                     this.state.leftFileContents :
@@ -149,6 +156,9 @@ class App extends React.Component {
                 <div className={'footer' + (this.state.isLeftFileLoaded && this.state.isRightFileLoaded ? ' loaded' : '')}>
                     <div className="instruction">
                         Pick a file on each side to begin comparing contents
+                    </div>
+                    <div className={'control' + (this.state.shouldWrapText ? ' active' : '')} onClick={this.toggleTextWrap.bind(this)}>
+                        Wrap text
                     </div>
                     <div className="control" onClick={this.resetComparison.bind(this)}>
                         Reset comparison

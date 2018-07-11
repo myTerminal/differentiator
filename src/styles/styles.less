@@ -123,6 +123,10 @@ html {
                                     .opacity(0);
                                 }
                             }
+
+                            &.wrap {
+                                white-space: pre-wrap;
+                            }
                         }
 
                         &.loaded {
@@ -162,6 +166,16 @@ html {
                         background-color: #fff;
                         .round-borders(5px);
                         cursor: pointer;
+
+                        &:hover {
+                            background-color: #ccc;
+                            border-color: #000;
+                        }
+
+                        &.active {
+                            color: #fff;
+                            background-color: #000;
+                        }
                     }
 
                     &.loaded {
