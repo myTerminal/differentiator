@@ -172,3 +172,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, page);
+
+if (module.hot) {
+    module.hot.accept();
+}
