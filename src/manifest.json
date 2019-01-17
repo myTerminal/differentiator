@@ -18,7 +18,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "/differentiator/?launcher=true",
+  "start_url": "#manifest-origin#?launcher=true",
   "display": "standalone",
   "background_color": "#000",
   "theme_color": "#000"
