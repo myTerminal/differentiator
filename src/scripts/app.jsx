@@ -1,19 +1,14 @@
-/* global require document FileReader alert */
+/* global document FileReader alert */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { FilePicker } from 'react-file-picker';
 import DiffMatchPatch from 'diff-match-patch';
 
-import '../styles/styles.less';
-import './service-worker-starter';
 import packageDetails from '../../package.json';
-
-const page = document.getElementById('page');
 
 const classes = ['equal', 'add', 'delete'];
 
-class App extends React.Component {
+export default class App extends React.Component {
     constructor() {
         super();
 
@@ -169,10 +164,4 @@ class App extends React.Component {
             </div>
         );
     }
-}
-
-ReactDOM.render(<App />, page);
-
-if (module.hot) {
-    module.hot.accept();
 }
