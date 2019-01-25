@@ -2,14 +2,14 @@
 
 const sourceDir = 'src';
 
-const configs = require('./configs.json');
-
 const webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
-const commonConfig = require('./webpack.common.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const commonConfig = require('./webpack.common.js');
+const configs = require('./configs.json');
 
 const copy = new CopyWebpackPlugin([
     {
