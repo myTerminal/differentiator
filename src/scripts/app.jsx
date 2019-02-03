@@ -72,9 +72,9 @@ export default class App extends React.Component {
     }
 
     toggleTextWrap() {
-        this.setState({
-            shouldWrapText: !this.state.shouldWrapText
-        });
+        this.setState(previousState => ({
+            shouldWrapText: !previousState.shouldWrapText
+        }));
     }
 
     resetComparison() {
@@ -90,10 +90,9 @@ export default class App extends React.Component {
 
     startComparingFileContents() {
         var dmp = new DiffMatchPatch(),
-            diff = dmp.diff_main(
-                this.state.leftFileContents,
-                this.state.rightFileContents
-            );
+            leftFileContents = this.state.leftFileContents,
+            rightFileContents = this.state.rightFileContents,
+            diff = dmp.diff_main(leftFileContents, rightFileContents);
 
         this.setState({
             isDiffReady: true,
@@ -105,7 +104,10 @@ export default class App extends React.Component {
         return (
             <div className="root-container">
                 <div className="header">
-                    <b>differentiator</b> - A simple file compare tool (v {packageDetails.version})
+                    <b>differentiator</b>
+                    &nbsp;- A simple file compare tool (v
+                    {packageDetails.version}
+                    )
                     <a className="source fa fa-github fa-lg" href="https://github.com/myTerminal/differentiator" target="_blank">&nbsp;</a>
                 </div>
                 <div className="container">
@@ -114,18 +116,19 @@ export default class App extends React.Component {
                             <FilePicker
                                 onChange={file => this.onFilePick(file, 1)}
                                 onError={err => alert(err)}>
-                                <button className="file-picker-button">
+                                <button type="button" className="file-picker-button">
                                     Pick a file to compare
                                 </button>
                             </FilePicker>
                         </div>
                         <div className={'file-contents' + (this.state.shouldWrapText ? ' wrap' : '')} id="file-contents-1">
                             {
-                                !this.state.isDiffReady ?
-                                    this.state.leftFileContents :
-                                    this.state.diff.map(d =>
-                                        <span key={d[0] + d[1]} className={'diff ' + (classes[d[0]] || 'delete')}>{d[1]}</span>
-                                    )
+                                !this.state.isDiffReady
+                                    ? this.state.leftFileContents
+                                    : this.state.diff
+                                        .map(d =>
+                                            <span key={d[0] + d[1]} className={'diff ' + (classes[d[0]] || 'delete')}>{d[1]}</span>
+                                        )
                             }
                         </div>
                     </div>
@@ -134,18 +137,19 @@ export default class App extends React.Component {
                             <FilePicker
                                 onChange={file => this.onFilePick(file, 2)}
                                 onError={err => alert(err)}>
-                                <button className="file-picker-button">
+                                <button type="button" className="file-picker-button">
                                     Pick a file to compare
                                 </button>
                             </FilePicker>
                         </div>
                         <div className={'file-contents' + (this.state.shouldWrapText ? ' wrap' : '')} id="file-contents-2">
                             {
-                                !this.state.isDiffReady ?
-                                    this.state.leftFileContents :
-                                    this.state.diff.map(d =>
-                                        <span key={d[0] + d[1]} className={'diff ' + (classes[d[0]] || 'delete')}>{d[1]}</span>
-                                    )
+                                !this.state.isDiffReady
+                                    ? this.state.leftFileContents
+                                    : this.state.diff
+                                        .map(d =>
+                                            <span key={d[0] + d[1]} className={'diff ' + (classes[d[0]] || 'delete')}>{d[1]}</span>
+                                        )
                             }
                         </div>
                     </div>
