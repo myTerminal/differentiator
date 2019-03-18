@@ -1,6 +1,6 @@
 {
   "name": "differentiator",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "A simple file compare tool",
   "main": "public/index.html",
   "scripts": {
@@ -23,7 +23,7 @@
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "ample-alerts": "0.13.1",
+    "ample-alerts": "1.2.1",
     "diff-match-patch": "1.0.4",
     "font-awesome": "4.7.0",
     "react": "16.7.0",
