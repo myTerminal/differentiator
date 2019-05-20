@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 
 import '../styles/styles.less';
 
-import './service-worker-starter';
+import './pwa';
 
 import App from './app.jsx';
 
