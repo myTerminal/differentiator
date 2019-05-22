@@ -104,11 +104,29 @@ export default class App extends React.Component {
         return (
             <div className="root-container">
                 <div className="header">
-                    <b>differentiator</b>
-                    &nbsp;- A simple file compare tool (v
-                    {packageDetails.version}
-                    )
-                    <a className="source fa fa-github fa-lg" href="https://github.com/myTerminal/differentiator" target="_blank">&nbsp;</a>
+                    <i
+                        id="pwa-install"
+                        className="fa fa-plus-square-o fa-lg"
+                        title="Install as an app"
+                        aria-hidden="true"
+                        style={{ display: 'none' }}
+                    />
+                    <span id="app-name">
+                        &nbsp;
+                        {packageDetails.name}
+                        &nbsp;
+                    </span>
+                    <span id="app-description">
+                        -&nbsp;
+                        {packageDetails.description}
+                        &nbsp;
+                    </span>
+                    <span id="app-version">
+                        (v
+                        {packageDetails.version}
+                        )&nbsp;
+                    </span>
+                    <a id="app-source" className="fa fa-github fa-lg" href="https://github.com/myTerminal/differentiator" target="_blank">&nbsp;</a>
                 </div>
                 <div className="container">
                     <div className={'file-input' + (this.state.isLeftFileLoaded ? ' loaded' : '')}>

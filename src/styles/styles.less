@@ -56,7 +56,22 @@ html {
                     background-color: #000;
                     color: #eee;
 
-                    .source {
+                    #pwa-install {
+                        cursor: pointer;
+                    }
+
+                    #app-name {
+                        font-weight: bold;
+                    }
+
+                    #app-description {
+
+                        @media (orientation: portrait) {
+                            display: none;
+                        }
+                    }
+
+                    #app-source {
                         margin-left: 5px;
                         color: #fff;
                         text-decoration: none;
