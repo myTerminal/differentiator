@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-const cacheName = '1558388264055',
+const cacheName = '1558491494973',
     origin = '/differentiator/';
 
 this.addEventListener(
