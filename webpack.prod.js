@@ -13,23 +13,21 @@ const configs = require('./configs.json');
 
 const copy = new CopyWebpackPlugin([
     {
-        from: sourceDir + '/sw.js',
-        transform: function (content, path) {
-            return content.toString()
+        from: `${sourceDir}/sw.js`,
+        transform: (content, path) =>
+            content.toString()
                 .replace(/#sw-cache-string#/g, (new Date().getTime()))
-                .replace(/#sw-origin#/g, configs.origin);
-        }
+                .replace(/#sw-origin#/g, configs.origin)
     },
     {
-        from: sourceDir + '/manifest.json',
-        transform: function (content, path) {
-            return content.toString()
-                .replace(/#manifest-origin#/g, configs.origin);
-        }
+        from: `${sourceDir}/manifest.json`,
+        transform: (content, path) =>
+            content.toString()
+                .replace(/#manifest-origin#/g, configs.origin)
     }
 ]);
 const html = new HtmlWebpackPlugin({
-    template: sourceDir + '/index.ejs',
+    template: `${sourceDir}/index.ejs`,
     templateParameters: {
         titlePrefix: '',
         baseUrl: configs.domain + configs.origin
